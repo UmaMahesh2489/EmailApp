@@ -1,0 +1,27 @@
+<div class="container">
+    <header>
+    <h1>Email App</h1>
+  </header>
+</div>
+  <div class="container" style="margin-top:50px;">
+    <div class="row">
+      <div class="col-md-12" >
+        <div class="col-md-3">
+          <div class="vertical-menu">
+            
+            <a href="#/home" class="active">Inbox</a>
+            <a href="#/">Starred</a>
+            <a href="#/">Sent</a> 
+          </div>
+      </div>
+      <div class="col-md-9">
+        <h1 ng-repeat="emailids in getselectedEmailId(selectedpostid)">{{emailids.email}}</h1>
+          <div ng-repeat="posts in getselectedpostData(selectedpostid1)">
+             <h2 >{{posts.title}}</h2>
+            <h3>{{posts.body}}</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,65 @@
+<div class="container">
+    <header>
+    <h1>Email App</h1>
+    <form name="personForm" class="pull-right" novalidate>
+      <div class="col-md-12 ">
+        <div class="col-md-5">
+            <input  type="text" name="user" id="user" placeholder="Search User Name" class="pull-right" ng-model="user" ng-keyup="complete(user)"  />
+            <ul ng-hide="user===''" style="z-index: 1000;position: fixed;margin-left: -50px;margin-top: 25px;">
+              <li class="form-control" ng-repeat="usersdata in filterUser" ng-click="fillTextbox(usersdata)">{{usersdata}}</li>
+            </ul>
+        </div>
+       
+     </div>
+    
+    </form>
+  </header>
+</div>
+  <div class="container" style="margin-top:50px;">
+    <div class="row">
+      <div class="col-md-12" >
+        <div class="col-md-3">
+          <div class="vertical-menu">
+            <a href="#/home" class="active">Inbox</a>
+            <a href="#/">Starred</a>
+            <a href="#/">Sent</a>           
+          </div>
+      </div>
+      <div class="col-md-9">
+        
+        <table class="table table-bordered " ng-if="postsready && usersready">
+      <th>User Name</th>
+      <!-- <th>Email ID</th>         -->
+    <th>Title</th>
+    <!-- <th>Message Body</th> -->
+    <tr ng-repeat="posts in postData | filter:userFilter(user) | filter:emailFilter(searchemailidkey)" >          
+      <td  ng-repeat="usernames in getUsername(posts.userId)">{{usernames.name}}</td>
+      <!-- <td ng-repeat="emailids in getEmailId(posts.userId)">{{emailids.email}}</td>          -->
+       <td><a ui-sref="emailbody({value:[posts.userId,posts.id]})">{{posts.title}}</a></td>
+      <!-- <td>{{posts.body}}</td> -->
+    </tr>
+  </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <script type="text/ng-template" id="emailbody.html">
+
+  
+    <div class="modal-dialog"style="margin-top:10px;">
+      
+      
+        <button type="button" class="close" ng-click="close()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="modal-header">Email Details</div>
+        <h4 ng-repeat="emailids in getEmailId(post.userId)">Email ID: {{emailids.email}} </h4>
+         <h1>{{post.title}}</h1>
+         <p>{{post.body}}</p>
+         <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" ng-click="close()">Close</button>
+        </div>
+    </div>
+  
+  </script> -->
